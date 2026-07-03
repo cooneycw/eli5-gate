@@ -1,0 +1,14 @@
+{
+  "name": "eli5-gate",
+  "owner": {
+    "name": "cooneycw",
+    "url": "https://github.com/cooneycw"
+  },
+  "plugins": [
+    {
+      "name": "eli5-gate",
+      "source": "./",
+      "description": "Pre-implementation necessity gate for GitHub issues: plain-language intent ELI5, staleness/necessity verdict, and a plan-approval checkpoint before any code is written."
+    }
+  ]
+}

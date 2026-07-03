@@ -1,0 +1,19 @@
+{
+  "name": "eli5-gate",
+  "description": "Pre-implementation necessity gate for GitHub issues: plain-language intent ELI5, staleness/necessity verdict against post-filing history, and a plan-approval checkpoint before any code is written.",
+  "version": "1.0.0",
+  "author": {
+    "name": "cooneycw",
+    "url": "https://github.com/cooneycw"
+  },
+  "homepage": "https://github.com/cooneycw/eli5-gate",
+  "repository": "https://github.com/cooneycw/eli5-gate",
+  "license": "MIT",
+  "keywords": [
+    "workflow",
+    "issue-driven-development",
+    "code-review",
+    "necessity-gate",
+    "staleness-check"
+  ]
+}
