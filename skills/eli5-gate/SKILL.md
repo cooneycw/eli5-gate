@@ -60,8 +60,14 @@ issues. Output ONE verdict with the evidence behind it:
 | No longer needed | Solved or obsolete; recommend closing instead of implementing |
 | Needs reframing | The design moved; restate the corrected approach |
 
+Depth floor: the evidence must name the actual commit SHAs, merged PR numbers, and
+duplicate/superseding issue numbers inspected (or an explicit "none") - a bare
+verdict, or "reviewed recent history", does not satisfy the gate.
+
 **C. Proposed changes (pending approval)** - files to create/modify, gist of each
-change, scope estimate, risks. No code until approved.
+change, scope estimate, risks. No code until approved. Depth floor: one numbered
+line per file with its change gist - never "various files" - plus a scope estimate
+and at least one named risk (or an explicit "no notable risks").
 
 ### Step 3: The approval gate
 
@@ -87,3 +93,6 @@ Verdict + evidence (commits / PRs / dup-super issues since createdAt) + reasonin
 Numbered file-level plan + scope + risks
 Approval: REQUIRED | AUTO-GRANTED | N/A (close recommended)
 ```
+
+The skeleton is a floor, not a ceiling: fill every slot with the actual evidence
+and files, regardless of how concise the model's surrounding style is.

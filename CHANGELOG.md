@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+- Report depth floor (claude-power-pack#509): Section B must enumerate the actual
+  commit SHAs / PR numbers / issue numbers inspected (or an explicit "none");
+  Section C must list every file on its own numbered line with a scope estimate
+  and a named risk. The output-format template is now explicitly a floor, not a
+  ceiling, regardless of the model's verbosity profile. Mirrored in SKILL.md.
 - Internal consistency guard `scripts/check-consistency.sh` (#1): keeps the four
   verdict names and key behavior tokens in `skills/eli5-gate/SKILL.md` and
   `README.md` in sync with the canonical `eli5-core` section of
