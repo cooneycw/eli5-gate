@@ -75,6 +75,9 @@ where the gate was designed and battle-tested inside the `/flow:auto` issue
 lifecycle. This repository is the canonical source; improvement issues for the
 gate belong here, not in CPP.
 
+Architecture decisions (why it's its own repo, the vendor-back mechanism, dual
+packaging): [`docs/decisions/0001`](docs/decisions/0001-standalone-extraction-and-packaging.md).
+
 ## License
 
 MIT
