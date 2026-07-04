@@ -1,5 +1,7 @@
 # eli5-gate
 
+[![consistency](https://github.com/cooneycw/eli5-gate/actions/workflows/consistency.yml/badge.svg)](https://github.com/cooneycw/eli5-gate/actions/workflows/consistency.yml)
+
 **The pre-implementation necessity gate for GitHub issues.** Before any code is
 written, `/eli5 <issue>` answers three questions a reviewer actually cares about:
 
@@ -66,6 +68,28 @@ runs this gate as Step 3 of its nine-step issue lifecycle. CPP vendors the
 canonical core of this command (the `eli5-core` marker section in
 [commands/eli5.md](commands/eli5.md)) and layers its flow-specific wiring around
 it.
+
+## Development
+
+The gate's contract is restated in three files that must agree - the canonical
+routine ([commands/eli5.md](commands/eli5.md), between the `eli5-core` markers),
+the Agent Skill ([skills/eli5-gate/SKILL.md](skills/eli5-gate/SKILL.md)), and this
+README - plus two packaging manifests. A single guard keeps them honest:
+
+```
+scripts/check-consistency.sh            # fail-open: reports drift, exits 0
+scripts/check-consistency.sh --strict   # exits non-zero on any drift (used by CI)
+```
+
+It checks that the four verdict names match as a set across the restatements,
+that key behavior tokens (`--yes` / `--auto-approve`, the `eli5: auto-approve`
+trailer, the `createdAt` anchor, the read-only promise) are restated in SKILL.md,
+that the `eli5-core` vendor markers are intact, and that
+`.claude-plugin/plugin.json` / `marketplace.json` parse with their required
+fields. The [`consistency`](.github/workflows/consistency.yml) GitHub Actions
+workflow runs it with `--strict` on every push and pull request, so a stale
+restatement or malformed manifest cannot merge unnoticed. Mirrors
+claude-power-pack's own vendor+drift discipline.
 
 ## Provenance
 

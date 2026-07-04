@@ -69,8 +69,9 @@ change, scope estimate, risks. No code until approved.
   ready-to-paste `gh issue close --comment` citing the evidence; closing is the
   reviewer's call. STOP.
 - **Other verdicts** -> pause for reviewer approval (approve / redirect / reject).
-  In unattended mode (`--yes`, or an `eli5: auto-approve` trailer in the issue
-  body or HEAD commit), proceed but print the full report and note auto-approval.
+  In unattended mode (`--yes` / `--auto-approve`, or an `eli5: auto-approve`
+  trailer in the issue body or HEAD commit), proceed but print the full report
+  and note auto-approval.
   For `Partially addressed` / `Needs reframing`, the approved plan is the
   ADJUSTED one, not the original issue body.
 

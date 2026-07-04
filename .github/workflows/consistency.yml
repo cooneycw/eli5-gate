@@ -1,0 +1,19 @@
+name: consistency
+
+# Keeps the gate's restatements (SKILL.md, README.md) in sync with the canonical
+# routine (commands/eli5.md) and validates the plugin/marketplace manifests.
+# The check is fail-open locally; CI runs it with --strict so drift blocks merge.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  consistency:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run consistency guard (strict)
+        run: bash scripts/check-consistency.sh --strict

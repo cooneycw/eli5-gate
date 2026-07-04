@@ -1,5 +1,18 @@
 # Changelog
 
+## [Unreleased]
+
+- Internal consistency guard `scripts/check-consistency.sh` (#1): keeps the four
+  verdict names and key behavior tokens in `skills/eli5-gate/SKILL.md` and
+  `README.md` in sync with the canonical `eli5-core` section of
+  `commands/eli5.md`, checks the vendor markers are intact, and validates
+  `.claude-plugin/plugin.json` / `marketplace.json` parse with required fields.
+  Fail-open locally (exits 0, reports drift); `--strict` blocks in CI.
+- `consistency` GitHub Actions workflow runs the guard with `--strict` on every
+  push and pull request.
+- SKILL.md now restates the `--auto-approve` alias of `--yes` (drift the new
+  guard caught on its first run).
+
 ## [1.0.0] - 2026-07-03
 
 Initial release, extracted from claude-power-pack's `/flow:eli5`
