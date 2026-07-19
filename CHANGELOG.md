@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+- Section A depth floor (#3): the ELI5 intent section now carries an explicit
+  floor of its own, parallel to the Sections B/C floors - motivation before
+  mechanics, a plain-language gloss on every technical term at first use, and the
+  explain-like-I'm-five bar stated outright (a reader who has never seen the
+  codebase must understand what is wrong today and what will be better). Length
+  guidance relaxed from "two to four sentences" to a two-to-four-sentence
+  *minimum* so it no longer fights the floor. Mirrored in SKILL.md.
 - Report depth floor (claude-power-pack#509): Section B must enumerate the actual
   commit SHAs / PR numbers / issue numbers inspected (or an explicit "none");
   Section C must list every file on its own numbered line with a scope estimate

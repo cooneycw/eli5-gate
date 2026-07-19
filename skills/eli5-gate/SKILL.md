@@ -37,8 +37,15 @@ the issue, reuse that analysis.
 ### Step 2: Produce the three-section report (all three, every time)
 
 **A. ELI5 overview of intent** - plain-language restatement of what the issue is
-trying to accomplish and why, 2-4 sentences a non-author reviewer can sanity-check
-for a misread.
+trying to accomplish and why, 2-4 sentences minimum (a short paragraph is fine) a
+non-author reviewer can sanity-check for a misread.
+
+Depth floor: motivation before mechanics - what is wrong today and why it matters,
+*before* what will change; every unavoidable technical term gets a plain-language
+gloss on first use ("the worktree (a scratch copy of the repo)"); and someone who
+has never seen this codebase must finish the section understanding what is wrong
+now and what will be better after. A restatement of the issue title, or sentences
+that only parse for a reader who already read the issue, does not satisfy the gate.
 
 **B. Necessity / staleness analysis** - anchor to the issue's `createdAt` and
 inspect post-filing history:
@@ -87,6 +94,7 @@ and at least one named risk (or an explicit "no notable risks").
 ELI5 Gate: Issue #N
 
 == A. What this issue actually wants (ELI5) ==
+Wrong-today + why it matters, then what gets better; jargon glossed on first use
 == B. Is it still needed? ==
 Verdict + evidence (commits / PRs / dup-super issues since createdAt) + reasoning
 == C. Proposed changes (pending approval) ==
