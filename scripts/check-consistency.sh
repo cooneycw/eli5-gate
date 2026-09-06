@@ -122,7 +122,14 @@ echo "2. Contract phrases (present in canonical AND SKILL.md)"
 # Stable tokens that encode the gate's contract. If canonical renames one, the
 # check fails on canonical too - a deliberate nudge to update guard + SKILL.md
 # together rather than let the summary drift.
+#
+# The three bypass names are still pinned, but their meaning inverted: the gate
+# has no bypass, and both documents must keep NAMING the removed channels so a
+# future editor reinstates them deliberately rather than by accident. That is
+# also why 'The gate has no bypass' is itself a token - drop the sentence and
+# this check goes red.
 CONTRACT_TOKENS=(
+  'The gate has no bypass'
   '--yes'
   '--auto-approve'
   'eli5: auto-approve'

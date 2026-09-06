@@ -47,20 +47,25 @@ the issue belongs to.
 ## Use
 
 ```
-/eli5 42          # interactive: report, then wait for plan approval
-/eli5 42 --yes    # unattended: report + auto-approve (except No longer needed)
+/eli5 42          # report, then wait for plan approval
 ```
 
-Unattended pipelines can also opt in per-issue with an `eli5: auto-approve`
-trailer in the issue body or HEAD commit message. A `No longer needed` verdict is
-never auto-approved - it always stops for a human decision.
+**The gate has no bypass.** There is no flag, trailer, marker, or tier that
+skips the approval pause. `--yes` / `--auto-approve` are recognized only so a
+caller that passes one is told the gate is not skippable; an `eli5: auto-approve`
+trailer in an issue body or commit message is not read at all. Every such channel
+grants approval before the plan exists, and a trailer is not even chosen by the
+person running the command - on a branch cut from the default branch, HEAD is
+whatever commit merged last. A `No longer needed` verdict likewise always stops
+for a human decision.
 
 ## Integrating into a pipeline
 
 Run the gate between "analyze the issue" and "write the code". Treat the verdict
 as control flow: `No longer needed` stops the pipeline with a close
-recommendation; everything else pauses for approval (or proceeds under `--yes`)
-and hands the APPROVED plan to the implementation step.
+recommendation; everything else pauses for approval - unconditionally - and
+hands the APPROVED plan to the implementation step. A pipeline that cannot pause
+is a pipeline whose plans are never reviewed.
 
 Reference integration:
 [claude-power-pack](https://github.com/cooneycw/claude-power-pack)'s `/flow:auto`
@@ -82,8 +87,9 @@ scripts/check-consistency.sh --strict   # exits non-zero on any drift (used by C
 ```
 
 It checks that the four verdict names match as a set across the restatements,
-that key behavior tokens (`--yes` / `--auto-approve`, the `eli5: auto-approve`
-trailer, the `createdAt` anchor, the read-only promise) are restated in SKILL.md,
+that key behavior tokens (the no-bypass rule, the refused `--yes` /
+`--auto-approve` flags and `eli5: auto-approve` trailer, the `createdAt` anchor,
+the read-only promise) are restated in SKILL.md,
 that the `eli5-core` vendor markers are intact, and that
 `.claude-plugin/plugin.json` / `marketplace.json` parse with their required
 fields. The [`consistency`](.github/workflows/consistency.yml) GitHub Actions
